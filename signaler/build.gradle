@@ -1,8 +1,58 @@
 apply plugin: 'java'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+version = "0.1.0"
+group = "com.github.babedev.signaler"
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'jar'
+
+                name 'Alternative SignalR library for modern Android'
+                url "https://github.com/babedev/Signaler"
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'babedev'
+                        name 'babedev'
+                        email 'babedroid@gmail.com'
+                    }
+                }
+                scm {
+                    connection "https://github.com/babedev/Signaler"
+                    developerConnection "https://github.com/babedev/Signaler"
+                    url "https://github.com/babedev/Signaler"
+                }
+            }
+        }
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "signaler"
+        websiteUrl = "https://github.com/babedev/Signaler"
+        vcsUrl = "https://github.com/babedev/Signaler"
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
