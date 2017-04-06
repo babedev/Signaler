@@ -10,9 +10,6 @@ android:
   licenses:
     - 'android-sdk-license-.+'
     - '.+'
-env:
-  - props:
-  - secure
 jdk:
   - oraclejdk8
 
