@@ -3,7 +3,10 @@
 [![Build Status](https://travis-ci.org/babedev/Signaler.svg?branch=master)](https://travis-ci.org/babedev/Signaler)
 
 Alternative SignalR library for modern Android
-```
+
+Download
+--------
+```gradle
 repositories {
   ...
   maven { url "https://dl.bintray.com/babedev/maven" }
